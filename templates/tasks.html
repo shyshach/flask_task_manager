@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<head>
+    <meta http-equiv="refresh" content="1">
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <title>FlaskBlog</title>
+</head>
+    <h1>Your tasks</h1>
+    <table style="width:100%" id="table-box">
+  <tr>
+      <th><h4>author username</h4></th>
+    <th><h4>task id</h4></th>
+    <th><h4>task duration</h4></th>
+    <th><h4>status</h4></th>
+  </tr>
+  {% for task in tasks %}
+      <tr>
+          <th><h4>{{ task["author_username"] }} </h4></th>
+      <th><h4> {{ task["task_id"] }} </h4></th>
+      <th><h4> {{ task["duration"] }} </h4></th>
+      <th><h4> {{ task["status"] }} </h4></th>
+      {% if 0 < task["status"] < task["duration"] %}
+          <th><button id={{ task["task_id"] }} onclick="myFunction(this)" class="editbtn"> STOP </button></th>
+
+      {% endif %}
+      </tr>
+  {% endfor %}
+</table>
+
+
+
+    <script type="text/javascript">
+function myFunction(elmnt) {
+    const my_id = elmnt.id;
+    try {
+    const response = fetch('{{ stop_url }}', {
+      method: 'post',
+      body: JSON.stringify({
+        'task_id':(my_id)
+      })
+    });
+    console.log('Completed!', response);
+  } catch(err) {
+    console.error(`Error: ${err}`);
+  }
+}
+
+    </script>
+{% endblock %}

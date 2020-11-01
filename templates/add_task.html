@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="container">
+        <h1>Add task</h1>
+        <form action="" method="POST">
+            <div class="form-group">
+                <input type="number" name="duration" class="form-control" placeholder="Duration"  required>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
+
+{% endblock %}

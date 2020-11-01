@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<head>
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <title>Flask Tasks</title>
+</head>
+    <h1 align="center">Your tasks</h1>
+    <table style="width:120%" id="table-box">
+  <tr>
+      <th><h4> Function name </h4></th>
+      <th><h4>Language</h4></th>
+      <th><h4>last update</h4></th>
+      <th><h4>State</h4></th>
+      <th><h4>Last Update Status</h4></th>
+      <th><h4>Concurrency</h4></th>
+
+  </tr>
+
+      <tr>
+          <th><h4>{{ task["Configuration"]["FunctionName"] }} </h4></th>
+          <th><h4> {{ task["Configuration"]["Runtime"] }} </h4></th>
+          <th><h4> {{ task["Configuration"]["LastModified"] }} </h4></th>
+          <th><h4> {{ task["Configuration"]["State"] }} </h4></th>
+          <th><h4> {{ task["Configuration"]["LastUpdateStatus"] }} </h4></th>
+          <th><h4> {{ task["Concurrency"]["ReservedConcurrentExecutions"] }} </h4></th>
+
+      </tr>
+
+</table>
+
+
+
+
+{% endblock %}

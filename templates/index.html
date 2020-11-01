@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <title></title>
+</head>
+    <h1>{% block title %} Welcome to Rostochka Tasks {% endblock %}</h1>
+
+{% endblock %}
