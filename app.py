@@ -9,7 +9,7 @@ import config
 app = Flask(__name__)
 app.static_folder = 'static'
 app.secret_key = "ogokruto"
-api_url = config.API_URL # API GATEWAY url
+api_url = config.API_URL  # API GATEWAY url
 
 
 def login_required(test):
@@ -156,4 +156,4 @@ if __name__ == '__main__':
     app.config.update({
         'TESTING': True
     })
-    app.run(debug=True, port=5050)
+    app.run(debug=True, host='0.0.0.0', port=5050)

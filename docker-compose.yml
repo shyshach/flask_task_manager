@@ -1,0 +1,11 @@
+version: '3'
+services:
+  flask:
+    build: .
+    command: python run.py
+    ports:
+    - "5050:5050"
+    volumes:
+      - ./:/flask_servers
+    expose:
+      - "5050"
