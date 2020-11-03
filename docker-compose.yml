@@ -4,8 +4,22 @@ services:
     build: .
     command: python run.py
     ports:
-    - "5050:5050"
+      - "5001:5000"
     volumes:
       - ./:/flask_servers
-    expose:
-      - "5050"
+  flask2:
+    build: .
+    command: python app.py
+    ports:
+      - "5002:5000"
+    volumes:
+      - ./:/flask_servers
+
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    ports:
+      - "8080:80"
+    depends_on:
+      - flask
+      - flask2
